@@ -69,8 +69,8 @@ public class Main {
                     if (!vehiculosRegistrados.isEmpty()) {
                         System.out.println("Ingrese el código del parqueadero:");
                         int codigoParqueaderoCosto = scanner.nextInt();
-                        scanner.nextLine(); // Consumir el salto de línea
-
+                        scanner.nextLine(); 
+                        
                         calcularCostoEstacionamiento(scanner, codigoParqueaderoCosto);
                     } else {
                         System.out.println("No hay vehículos registrados.");
@@ -92,7 +92,7 @@ public class Main {
         } while (opcion != 6);
         scanner.close();
     }
-
+    //Mi menú
     private static void mostrarMenu() {
         System.out.println("\nMenú Principal");
         System.out.println("");
@@ -109,8 +109,8 @@ public class Main {
     private static void registrarVehiculo(Scanner scanner) {
         System.out.println("Ingrese el código del parqueadero:");
         int codigoParqueadero = scanner.nextInt();
-        scanner.nextLine(); // Consumir el salto de línea
-
+        scanner.nextLine(); 
+        //metodo para obtener parqueadero
         Parqueadero parqueadero = obtenerParqueadero(codigoParqueadero);
         if (parqueadero != null) {
             System.out.println("Ingrese la placa del vehículo:");
@@ -151,7 +151,7 @@ public class Main {
             System.out.println("No se encontró un parqueadero con el código " + codigoParqueadero);
         }
     }
-
+    //metodo para ver los puestos ocupados y disponibles
     private static void verPuestosOcupadosDisponibles(Parqueadero parqueadero) {
         Puesto[][] puestos = parqueadero.getPuestos();
         for (int i = 0; i < puestos.length; i++) {
@@ -166,7 +166,7 @@ public class Main {
             }
         }
     }
-
+    //metodo para calcular los costos del estacionamiento
     private static void calcularCostoEstacionamiento(Scanner scanner, int codigoParqueadero) {
         System.out.println("Ingrese la placa del vehículo para calcular el costo:");
         String placa = scanner.nextLine();
@@ -186,7 +186,7 @@ public class Main {
             System.out.println("No se encontró el vehículo con la placa " + placa);
         }
     }
-
+    //metodo para calcular el tiempo estacionado 
     public static long calcularTiempoEstacionado(String horaSalida, String horaIngreso) {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         try {
@@ -199,7 +199,7 @@ public class Main {
         }
         return 0;
     }
-
+    //metodo para generar el informe diario y mensual
     private static void registrarMovimientoDiarioMensual(double costo) {
         Date fechaActual = new Date();
         SimpleDateFormat formatoDiario = new SimpleDateFormat("dd/MM/yyyy");
@@ -211,7 +211,7 @@ public class Main {
         registroDiario.put(fechaDiario, registroDiario.getOrDefault(fechaDiario, 0.0) + costo);
         registroMensual.put(fechaMensual, registroMensual.getOrDefault(fechaMensual, 0.0) + costo);
     }
-
+    //metodo para generar el reporte (pedido mediante el codigo del parqueadero)
     private static void generarReporte(Scanner scanner) {
         System.out.println("Ingrese el código del parqueadero para generar el reporte:");
         int codigoParqueadero = scanner.nextInt();
@@ -232,7 +232,7 @@ public class Main {
             System.out.println("No se encontró un parqueadero con el código " + codigoParqueadero);
         }
     }
-
+    //método para liberar el puesto y que pueda ser ocupado por otro vehiculo 
     private static void liberarPuesto(Vehiculo vehiculo, Parqueadero parqueadero) {
         Puesto[][] puestos = parqueadero.getPuestos();
         for (int i = 0; i < puestos.length; i++) {
