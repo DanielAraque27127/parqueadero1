@@ -20,7 +20,7 @@ public class Parqueadero extends Tarifa {
     }
 
 
-
+        //inicializar la variable mediante un for anidado
     private void inicializarPuestos(int filas, int columnas) {
         puestos = new Puesto[filas][columnas];
         for (int i = 0; i < filas; i++) {
@@ -29,7 +29,7 @@ public class Parqueadero extends Tarifa {
             }
         }
     }
-
+    // gets de vehiculos
     public double getTarifaMotoClasica() {
         return tarifaMotoClasica;
     }
@@ -41,7 +41,7 @@ public class Parqueadero extends Tarifa {
     public double getTarifaCarro() {
         return tarifaCarro;
     }
-
+    //metodo para ubicar el vehiculo ssegun la dimension del parqueadero
     public boolean ubicarVehiculo(Vehiculo vehiculo, int fila, int columna) {
         if (fila >= 0 && fila < puestos.length && columna >= 0 && columna < puestos[0].length) {
             if (!puestos[fila][columna].estaOcupado()) {
